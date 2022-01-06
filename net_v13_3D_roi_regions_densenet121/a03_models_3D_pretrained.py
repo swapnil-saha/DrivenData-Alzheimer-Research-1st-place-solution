@@ -24,7 +24,7 @@ def Model_3D_pretrained_densenet121(
         input_shape,
         dropout_val=0.2,
         out_channels=1,
-        use_imagenet=True,
+        use_imagenet=False,
 ):
     from keras.models import Model, load_model
     from keras.layers import Dense, Input, GlobalAveragePooling3D, Dropout
