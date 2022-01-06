@@ -106,36 +106,36 @@ class ModelCheckpoint_Stat(Callback):
             else:
                 self.epochs_from_best_model += 1
 
-            if self.save_best_only:
-                current = score
-                if current is None:
-                    warnings.warn('Can save best model only with %s available, '
-                                  'skipping.' % (self.monitor), RuntimeWarning)
-                else:
-                    if self.monitor_op(current, self.best):
-                        if self.verbose > 0:
-                            print('\nEpoch %05d: %s improved from %0.5f to %0.5f,'
-                                  ' saving model to %s'
-                                  % (epoch + 1, self.monitor, self.best,
-                                     current, filepath))
-                        self.best = current
-                        if self.save_weights_only:
-                            self.model.save_weights(filepath, overwrite=True)
-                        else:
-                            self.model.save(filepath, overwrite=True)
-                        shutil.copy(filepath, self.filepath_static)
-                    else:
-                        if self.verbose > 0:
-                            print('\nEpoch %05d: %s did not improve' %
-                                  (epoch + 1, self.monitor))
-            else:
-                if self.verbose > 0:
-                    print('\nEpoch %05d: saving model to %s' % (epoch + 1, filepath))
-                if self.save_weights_only:
-                    self.model.save_weights(filepath, overwrite=True)
-                else:
-                    self.model.save(filepath, overwrite=True)
-                shutil.copy(filepath, self.filepath_static)
+#             if self.save_best_only:
+#                 current = score
+#                 if current is None:
+#                     warnings.warn('Can save best model only with %s available, '
+#                                   'skipping.' % (self.monitor), RuntimeWarning)
+#                 else:
+#                     if self.monitor_op(current, self.best):
+#                         if self.verbose > 0:
+#                             print('\nEpoch %05d: %s improved from %0.5f to %0.5f,'
+#                                   ' saving model to %s'
+#                                   % (epoch + 1, self.monitor, self.best,
+#                                      current, filepath))
+#                         self.best = current
+#                         if self.save_weights_only:
+#                             self.model.save_weights(filepath, overwrite=True)
+#                         else:
+#                             self.model.save(filepath, overwrite=True)
+#                         shutil.copy(filepath, self.filepath_static)
+#                     else:
+#                         if self.verbose > 0:
+#                             print('\nEpoch %05d: %s did not improve' %
+#                                   (epoch + 1, self.monitor))
+#             else:
+#                 if self.verbose > 0:
+#                     print('\nEpoch %05d: saving model to %s' % (epoch + 1, filepath))
+#                 if self.save_weights_only:
+#                     self.model.save_weights(filepath, overwrite=True)
+#                 else:
+#                     self.model.save(filepath, overwrite=True)
+#                 shutil.copy(filepath, self.filepath_static)
 
             if self.patience is not None:
                 if self.epochs_from_best_model > self.patience:
