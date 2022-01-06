@@ -10,6 +10,8 @@ if __name__ == '__main__':
     os.environ["KERAS_BACKEND"] = "tensorflow"
     os.environ["CUDA_VISIBLE_DEVICES"] = "{}".format(gpu_use)
 
+import sys
+sys.path.insert(1, '/content/DrivenData-Alzheimer-Research-1st-place-solution')
 
 from a00_common_functions import *
 from multiprocessing.pool import ThreadPool
